@@ -2,9 +2,9 @@
 
 void update_matrix(list_t *list)
 {
-  #if SNAKE_DEBUG
+  #ifdef SNAKE_DEBUG
   system("clear");
-
+  #endif /*SNAKE_DEBUG*/
 
 	memset(led_out, '\0', sizeof(led_out));
 	iter_t *iter = list_createiterator(list);
@@ -15,7 +15,7 @@ void update_matrix(list_t *list)
 	}
 }
 
-#if SNAKE_DEBUG
+#ifdef SNAKE_DEBUG
 void temp_show_matrix(char a[][SIZE])
 {
 	for (char i = 0; i < 8; i++)
