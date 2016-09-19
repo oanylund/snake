@@ -9,6 +9,23 @@
 
 int main(void)
 {
+  logic_t statemachine;
+
+
+
+  while(1)
+  {
+    switch(statemachine.current_state)
+    {
+      case ERROR:
+      break;
+      case ENTRY:
+      break;
+      case FOO:
+      break;
+      case BAR:
+      break;
+    }
 
 
 
@@ -16,11 +33,7 @@ int main(void)
 
 
 
-
-
-
-
-
+  }
 
   return 0;
 }
