@@ -31,7 +31,7 @@ void    list_addfirst         (list_t *list, void *item);
 void    list_addlast          (list_t *list, void *item);
 void    list_removeitem       (list_t *list, void *item);
 iter_t* list_createiterator   (list_t *list);
-void*	  list_iternext         (iter_t *iter, list_t *list);
+void*   list_iternext         (list_t *list, iter_t *iter);
 void	  list_iterreset        (iter_t *iter, list_t *list);
 void	  list_destroyiterator  (iter_t *iter);
 

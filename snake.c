@@ -2,16 +2,21 @@
 
 void update_matrix(list_t *list)
 {
-	//memset(matrix, 0, sizeof(matrix[0][0]*8*8));
+  #if SNAKE_DEBUG
+  system("clear");
+
+
+	memset(led_out, '\0', sizeof(led_out));
 	iter_t *iter = list_createiterator(list);
 	item_t *item = NULL;
-	while (item = list_iternext(iter, list))
+	while (item = list_iternext(list, iter))
 	{
 		led_out[item->x][item->y] = 1;
 	}
 }
 
-void temp_show_matrix(char a[][N])
+#if SNAKE_DEBUG
+void temp_show_matrix(char a[][SIZE])
 {
 	for (char i = 0; i < 8; i++)
 	{
@@ -23,3 +28,4 @@ void temp_show_matrix(char a[][N])
 	}
 	printf("\n\n");
 }
+#endif /*SNAKE_DEBUG*/

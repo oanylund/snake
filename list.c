@@ -202,7 +202,7 @@ void list_removeitem(list_t *list, void *item)
 \param   "list of type list_t first defined in list.h"
 \return  "returns iter of type iter_t first defined in list.h"
 */
-iter_t *list_createiterator(list_t *list)
+iter_t* list_createiterator(list_t *list)
 {
 	assert(list != NULL);
 	assert(list->head != NULL);
@@ -227,7 +227,7 @@ iter_t *list_createiterator(list_t *list)
 \todo    "Might be more functional to return NULL if the end of list is reached. while(iter->node->next != NULL)"
 \todo    "Update the doxygen information about the parameter item"
 */
-void *list_iternext(iter_t *iter, list_t *list)
+void* list_iternext(list_t *list, iter_t *iter)
 {
 	if (iter->node == NULL)
 	{

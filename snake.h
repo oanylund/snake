@@ -1,8 +1,13 @@
 #ifndef  _SNAKE_H
 #define _SNAKE_H
-#define N 8
+#include <string.h> /*For memset in function update_matrix*/
 
-char led_out[8][8] =
+#define SIZE 8
+#define SNAKE_DEBUG
+
+
+
+char led_out[SIZE][SIZE] =
 {
 	{ 0,0,0,0,0,0,0,0 },
 	{ 0,0,0,0,0,0,0,0 },
@@ -21,5 +26,5 @@ struct item
   char y;
 };
 void update_matrix(list_t *list);
-void temp_show_matrix(char a[][8]);
+void temp_show_matrix(char a[][SIZE]);
 #endif /* _SNAKE_H */

@@ -5,6 +5,7 @@
 #include "snake.c"
 #include <time.h>
 
+
 int main(void)
 {
   logic_t statemachine;
@@ -14,20 +15,38 @@ int main(void)
   item->y = 4;
   list_addfirst(list,item);
   iter_t *iter = list_createiterator(list);
-  update_matrix(list);
-  temp_show_matrix(led_out);
-  item->x--;
-  item->y;
-  list_addfirst(list,item);
-  update_matrix(list);
-  temp_show_matrix(led_out);
 
-  // while(1)
-  // {
-  //
-  //
-  //
-  // }
+//////////////////////
+char userinput;
+//////////////////////
+
+  while(1)
+  {
+    update_matrix(list);
+    temp_show_matrix(led_out);
+    scanf("%c", &userinput);
+    switch(userinput)
+    {
+      case 'w':
+      while(item = list_iternext(list,iter))
+        item->x--;
+      break;
+      case 'a':
+      while(item = list_iternext(list,iter))
+        item->y--;
+      break;
+      case 's':
+      while(item = list_iternext(list,iter))
+        item->x++;
+      break;
+      case 'd':
+      while(item = list_iternext(list,iter))
+        item->y++;
+      break;
+
+    }
+
+  }
 
   return 0;
 }

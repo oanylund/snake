@@ -28,6 +28,7 @@
 *.dylib
 
 # Executables
+*.stackdump
 *.exe
 *.out
 *.app
