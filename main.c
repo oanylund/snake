@@ -1,3 +1,7 @@
+//////////////////////
+static char userinput;
+//////////////////////
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.c"
@@ -5,46 +9,36 @@
 #include "snake.c"
 #include <time.h>
 
-
 int main(void)
 {
   logic_t statemachine;
   list_t *list = list_create();
   item_t *item = malloc(sizeof(item_t));
-  item->x = 4;
-  item->y = 4;
-  list_addfirst(list,item);
+  item_t *apple = malloc(sizeof(item_t));
+  list_addlast(list,item);
   iter_t *iter = list_createiterator(list);
+  initialize_game(item,apple);
 
-//////////////////////
-char userinput;
-//////////////////////
-
+  ////////////////////
+  item_t *test1 = malloc(sizeof(item_t));
+  test1->r = 3;
+  test1->c = 4;
+  list_addlast(list,test1);
+  item_t *test2 = malloc(sizeof(item_t));
+  test2->r = 2;
+  test2->c = 4;
+  list_addlast(list,test2);
+  ///////////////////
   while(1)
   {
-    update_matrix(list);
-    temp_show_matrix(led_out);
+    //////////////////////
     scanf("%c", &userinput);
-    switch(userinput)
-    {
-      case 'w':
-      while(item = list_iternext(list,iter))
-        item->x--;
-      break;
-      case 'a':
-      while(item = list_iternext(list,iter))
-        item->y--;
-      break;
-      case 's':
-      while(item = list_iternext(list,iter))
-        item->x++;
-      break;
-      case 'd':
-      while(item = list_iternext(list,iter))
-        item->y++;
-      break;
+    //////////////////////
 
-    }
+    update_matrix(list,apple);
+    temp_interface(led_out);
+
+
 
   }
 

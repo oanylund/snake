@@ -1,5 +1,5 @@
 #include "list.h"
-#define LIST_DEBUG 1
+
 
 /*!
 \brief   "Creates a list an allocates memory for it"
@@ -227,12 +227,11 @@ iter_t* list_createiterator(list_t *list)
 \todo    "Might be more functional to return NULL if the end of list is reached. while(iter->node->next != NULL)"
 \todo    "Update the doxygen information about the parameter item"
 */
-void* list_iternext(list_t *list, iter_t *iter)
+void* list_next(list_t *list, iter_t *iter)
 {
 	if (iter->node == NULL)
 	{
 		iter->node = list->head;
-		list_iterreset(iter, list);
 		return NULL;
 	}
 
@@ -251,7 +250,7 @@ void* list_iternext(list_t *list, iter_t *iter)
 \bug     "Never tested"
 \todo    "Update the doxygen information about the parameter item"
 */
-void list_iterreset(iter_t *iter, list_t *list)
+void list_iterreset(list_t* list, iter_t* iter)
 {
 	iter->node = list->head;
 }

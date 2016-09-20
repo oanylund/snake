@@ -2,6 +2,9 @@
 #define _LIST_H
 #include <assert.h>
 
+//#define LIST_DEBUG 1
+
+
 typedef struct node node_t;
 struct node
 {
@@ -31,8 +34,8 @@ void    list_addfirst         (list_t *list, void *item);
 void    list_addlast          (list_t *list, void *item);
 void    list_removeitem       (list_t *list, void *item);
 iter_t* list_createiterator   (list_t *list);
-void*   list_iternext         (list_t *list, iter_t *iter);
-void	  list_iterreset        (iter_t *iter, list_t *list);
+void*   list_next             (list_t *list, iter_t *iter);
+void	  list_iterreset        (list_t* list, iter_t* iter);
 void	  list_destroyiterator  (iter_t *iter);
 
 #endif /*_LIST_H*/
