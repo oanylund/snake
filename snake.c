@@ -19,29 +19,34 @@ void update_matrix(list_t *list,item_t *apple)
 	memset(led_out, '\0', sizeof(led_out));
   iter_t* iter = list_createiterator(list);
   item_t* item = list_next(list,iter);
-  item_t* two = item;
-  item_t* three;
+  item_t* tmp1;
+  tmp1->r = item->r;
+  tmp1->c = item->c;
+  item_t* tmp2;
 
-  switch(userinput)
-  {
-    case 'w':
-      item->r--;
-    break;
-    case 'a':
-      item->c--;
-    break;
-    case 's':
-      item->r++;
-    break;
-    case 'd':
-      item->c++;
-    break;
-  }
 
+  #ifdef INTERFACE_TERMINAL
+    switch(userinput)
+    {
+      case 'w':
+        item->r--;
+      break;
+      case 'a':
+        item->c--;
+      break;
+      case 's':
+        item->r++;
+      break;
+      case 'd':
+        item->c++;
+      break;
+    }
+  #endif /*INTERFACE_TERMINAL*/
+
+  printf("%d %d\n", item->r, item->c);
+  printf("%d %d\n", tmp1->r, tmp1->c);
   while(item = list_next(list,iter))
   {
-    //TODO: SOMETHING
-
 
   }
 

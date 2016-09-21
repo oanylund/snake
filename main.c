@@ -20,14 +20,14 @@ int main(void)
   initialize_game(item,apple);
 
   ////////////////////
-  item_t *test1 = malloc(sizeof(item_t));
-  test1->r = 3;
-  test1->c = 4;
-  list_addlast(list,test1);
-  item_t *test2 = malloc(sizeof(item_t));
-  test2->r = 2;
-  test2->c = 4;
-  list_addlast(list,test2);
+  item = malloc(sizeof(item_t));
+  item->r = 3;
+  item->c = 4;
+  list_addlast(list,item);
+  item = malloc(sizeof(item_t));
+  item->r = 2;
+  item->c = 4;
+  list_addlast(list,item);
   ///////////////////
   while(1)
   {
