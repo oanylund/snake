@@ -1,4 +1,21 @@
 #include "snake.h"
+
+char led_out[SIZE][SIZE] =
+{
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 },
+  { 0,0,0,0,0,0,0,0 }
+};
+
+#ifdef INTERFACE_TERMINAL
+char userinput;
+#endif /*INTERFACE_TERMINAL*/
+
 void initialize_game(item_t *item, item_t *apple)
 {
   //show high score

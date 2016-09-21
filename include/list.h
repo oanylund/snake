@@ -1,6 +1,8 @@
 #ifndef _LIST_H
 #define _LIST_H
 #include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 //#define LIST_DEBUG 1
 

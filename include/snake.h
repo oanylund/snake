@@ -1,6 +1,8 @@
 #ifndef  _SNAKE_H
 #define _SNAKE_H
 #include <string.h> /*For memset in function update_matrix*/
+#include <stdio.h>
+#include "list.h"
 #include <time.h>
 
 #define SIZE 8
@@ -16,17 +18,11 @@
   #define RIGHT ((LED_LEDPORT) & (1<<(DB3)))
 #endif /*INTERFACE_MATRIX*/
 
-char led_out[SIZE][SIZE] =
-{
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 },
-	{ 0,0,0,0,0,0,0,0 }
-};
+#ifdef INTERFACE_TERMINAL
+extern char userinput;
+#endif /*INTERFACE_TERMINAL*/
+
+char led_out[SIZE][SIZE];
 
 typedef struct item item_t;
 struct item
@@ -35,6 +31,7 @@ struct item
   char c;
 };
 
+void initialize_game(item_t *item, item_t *apple);
 void update_matrix(list_t *list,item_t *apple);
 void temp_interface(char a[][SIZE]);
 #endif /* _SNAKE_H */

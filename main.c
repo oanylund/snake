@@ -1,13 +1,9 @@
-//////////////////////
-static char userinput;
-//////////////////////
-
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.c"
-#include "statemachine.c"
-#include "snake.c"
 #include <time.h>
+#include "list.h"
+#include "statemachine.h"
+#include "snake.h"
 
 int main(void)
 {
