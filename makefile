@@ -13,9 +13,10 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-snake: $(OBJ)
+build: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS)
 
+rebuild: clean build
 
 .PHONY: clean
 
