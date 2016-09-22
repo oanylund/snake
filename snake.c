@@ -36,11 +36,9 @@ void update_matrix(list_t *list,item_t *apple)
 	memset(led_out, '\0', sizeof(led_out));
   iter_t* iter = list_createiterator(list);
   item_t* item = list_next(list,iter);
-  item_t* tmp1;
-  tmp1->r = item->r;
-  tmp1->c = item->c;
-  item_t* tmp2;
-
+  item_t tmp1;
+  item_t tmp2;
+  memcpy(&tmp1,item,sizeof(item_t));
 
   #ifdef INTERFACE_TERMINAL
     switch(userinput)
@@ -60,20 +58,34 @@ void update_matrix(list_t *list,item_t *apple)
     }
   #endif /*INTERFACE_TERMINAL*/
 
-  printf("%d %d\n", item->r, item->c);
-  printf("%d %d\n", tmp1->r, tmp1->c);
   while(item = list_next(list,iter))
   {
-
+    tmp2.r = item->r;
+    tmp2.c = item->c;
+    item->r = tmp1.r;
+    item->c = tmp1.c;
+    tmp1.r = tmp2.r;
+    tmp1.c = tmp2.c;
   }
 
+  list_iterreset(list,iter);
+  item = list_next(list, iter);
+  if(item->r == apple->r && item->c == apple->c) {
+    item = malloc(sizeof(item_t));
+    item->r = tmp1.r;
+    item->c = tmp1.c;
+    list_addlast(list,item);
+
+    // Generate new apple position in new function
+  }
+
+  led_out[apple->r][apple->c] = 5;
   /*Iterate through the list and write to array*/
   list_iterreset(list,iter);
 	while (item = list_next(list, iter))
 	{
 		led_out[item->r][item->c] = 1;
 	}
-  led_out[apple->r][apple->c] = 5;
 
 }
 
