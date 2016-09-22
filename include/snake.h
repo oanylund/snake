@@ -2,8 +2,9 @@
 #define _SNAKE_H
 #include <string.h> /*For memset in function update_matrix*/
 #include <stdio.h>
-#include "list.h"
+#include <stdlib.h>
 #include <time.h>
+#include "list.h"
 
 #define SIZE 8
 #define SNAKE_DEBUG

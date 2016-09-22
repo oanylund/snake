@@ -24,6 +24,26 @@ void initialize_game(item_t *item, item_t *apple)
   item->c = 4;
   apple->r = 5;
   apple->c = 2;
+  srand(time(NULL));
+}
+
+char check_position_taken(list_t* list, iter_t* iter, item_t* point) {
+  item_t* item;
+  while(item = list_next(list,iter)) {
+    if( (point->r == item->r) && (point->c == item->c) ) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+void reposition_apple(list_t* list, item_t* apple) {
+  iter_t* iter = list_createiterator(list);
+  do {
+      apple->r = rand() % (SIZE - 2) + 1;
+      apple->c = rand() % (SIZE - 2) + 1;
+  } while (check_position_taken(list, iter, apple));
+  list_destroyiterator(iter);
 }
 
 void update_matrix(list_t *list,item_t *apple)
@@ -76,7 +96,8 @@ void update_matrix(list_t *list,item_t *apple)
     item->c = tmp1.c;
     list_addlast(list,item);
 
-    // Generate new apple position in new function
+    // Generate new apple position
+    reposition_apple(list, apple);
   }
 
   led_out[apple->r][apple->c] = 5;
@@ -86,7 +107,7 @@ void update_matrix(list_t *list,item_t *apple)
 	{
 		led_out[item->r][item->c] = 1;
 	}
-
+  list_destroyiterator(iter);
 }
 
 #ifdef INTERFACE_TERMINAL
