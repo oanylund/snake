@@ -28,7 +28,7 @@ int main(void)
   while(1)
   {
     //////////////////////
-    scanf("%c", &userinput);
+    scanf(" %c", &userinput);
     //////////////////////
 
     update_matrix(list,apple);
